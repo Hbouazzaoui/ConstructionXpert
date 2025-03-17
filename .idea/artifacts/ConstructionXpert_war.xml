@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="ConstructionXpert:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>ConstructionXpert</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="ConstructionXpert-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="ConstructionXpert:war exploded" />
+    </root>
+  </artifact>
+</component>
