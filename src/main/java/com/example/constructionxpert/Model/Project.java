@@ -2,6 +2,7 @@ package com.example.constructionxpert.Model;
 
 import java.util.Date;
 
+
 public class Project {
 
     private int projectId ;
@@ -45,15 +46,17 @@ public class Project {
     }
 
     public java.sql.Date getStartDate() {
-        return startDate;
+        return new java.sql.Date(startDate.getTime());
     }
 
     public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
+
+
     public java.sql.Date getEndDate() {
-        return endDate;
+        return new java.sql.Date(endDate.getTime());
     }
 
     public void setEndDate(Date endDate) {
