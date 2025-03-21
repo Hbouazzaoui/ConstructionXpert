@@ -16,6 +16,10 @@ public class Task {
         this.endDate = endDate;
     }
 
+    public Task() {
+
+    }
+
     public int getTaskId() {
         return taskId;
     }
