@@ -1,32 +1,51 @@
 package com.example.constructionxpert.Model;
 
-import java.util.Date;
-
 
 public class Project {
 
-    private int projectId ;
-    private String name ;
-    private  String description;
-    private Date startDate;
-    private Date endDate;
+    private int project_id;
+    private String name;
+    private String description;
+    private String start_date;
+    private String end_date;
     private double budget;
 
-    public Project(int projectId, String name, String description, Date startDate, Date endDate, double budget) {
-        this.projectId = projectId;
+
+    public Project() {
+        this.project_id = project_id;
         this.name = name;
         this.description = description;
-        this.startDate = startDate;
-        this.endDate = endDate;
+        this.start_date = start_date;
+        this.end_date = end_date;
         this.budget = budget;
     }
 
-    public int getProjectId() {
-        return projectId;
+
+    public Project(String name, String description, String start_date, String end_date, double budget) {
+        this.name = name;
+        this.description = description;
+        this.start_date = start_date;
+        this.end_date = end_date;
+        this.budget = budget;
     }
 
-    public void setProjectId(int projectId) {
-        this.projectId = projectId;
+    public Project(int project_id, String name, String description, String start_date, String end_date, double budget) {
+
+        this.project_id = project_id;
+        this.name = name;
+        this.description = description;
+        this.start_date = start_date;
+        this.end_date = end_date;
+        this.budget = budget;
+    }
+
+
+    public int getProject_id() {
+        return project_id;
+    }
+
+    public void setProject_id(int project_id) {
+        this.project_id = project_id;
     }
 
     public String getName() {
@@ -45,22 +64,20 @@ public class Project {
         this.description = description;
     }
 
-    public java.sql.Date getStartDate() {
-        return new java.sql.Date(startDate.getTime());
+    public String getStart_date() {
+        return start_date;
     }
 
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
+    public void setStart_date(String start_date) {
+        this.start_date = start_date;
     }
 
-
-
-    public java.sql.Date getEndDate() {
-        return new java.sql.Date(endDate.getTime());
+    public String getEnd_date() {
+        return end_date;
     }
 
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
+    public void setEnd_date(String end_date) {
+        this.end_date = end_date;
     }
 
     public double getBudget() {
