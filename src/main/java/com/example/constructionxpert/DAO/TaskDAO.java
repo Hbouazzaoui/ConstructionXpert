@@ -10,14 +10,14 @@ import java.util.List;
 public class TaskDAO {
 
     public void insertTask(Task task) {
-        String sql = "INSERT INTO task (description,startDate,endDate,),VALUES ( ?, ?, ?)";
-
-
+        String sql = "INSERT INTO tasks (project_id, description, start_date, end_date, resources) VALUES (?, ?, ?, ?, ?)";
         try (Connection connection = Connectiondb.getConnection();
              PreparedStatement stmt = connection.prepareStatement(sql)) {
-            stmt.setString(1, task.getDescription());
-            stmt.setDate(2, new java.sql.Date(task.getStartDate().getTime()));
-            stmt.setDate(3, new java.sql.Date(task.getEndDate().getTime()));
+            stmt.setInt(1,task.getProject_id());
+            stmt.setString(2, task.getDescription());
+            stmt.setString(3, task.getStart_date());
+            stmt.setString(4,task.getEnd_date());
+            stmt.setString(5,task.getResources());
 
             stmt.executeUpdate();
             System.out.println("Task inserted successfully!");
@@ -27,25 +27,26 @@ public class TaskDAO {
         }
     }
 
-    public List<Task> getAllTasks() {
+    public List<Task> getTasksByProjectId(int project_id) {
         List<Task> tasks = new ArrayList<>();
-        String quer = "SELECT * FROM task";
+        try {
+            String sql = "SELECT * FROM tasks WHERE project_id = ?";
+            PreparedStatement stmt = Connectiondb.getConnection().prepareStatement(sql);
+            stmt.setInt(1, project_id);
+            ResultSet rs = stmt.executeQuery();
 
-        try (Connection connection = Connectiondb.getConnection();
-             PreparedStatement prs = connection.prepareStatement(quer);
-             ResultSet resultSet = prs.executeQuery()) {
-            while (resultSet.next()) {
+            while (rs.next()) {
                 Task task = new Task(
-                resultSet.getInt("taskId"),
-                resultSet.getString("description"),
-                resultSet.getDate("startDate"),
-                resultSet.getDate("endDate"));
+                        rs.getInt("task_id"),
+                        rs.getInt("project_id"),
+                        rs.getString("description"),
+                        rs.getString("start_date"),
+                        rs.getString("end_date"),
+                        rs.getString("resources")
+                );
                 tasks.add(task);
             }
-
-
         } catch (SQLException e) {
-            System.err.println("Error fetching projects: " + e.getMessage());
             e.printStackTrace();
         }
         return tasks;
