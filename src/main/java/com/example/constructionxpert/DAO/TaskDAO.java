@@ -102,14 +102,5 @@ public class TaskDAO {
         }
     }
 
-    public void deleteTask(int task_id) {
-        try {
-            String sql = "DELETE FROM tasks WHERE task_id = ?";
-            PreparedStatement stmt = Connectiondb.getConnection().prepareStatement(sql);
-            stmt.setInt(1, task_id);
-            stmt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
+
 }
