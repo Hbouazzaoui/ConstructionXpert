@@ -31,12 +31,12 @@ public class ProjectServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
         if (action == null) {
-            action = "listProjet";  // Default action
+            action = "listProjet";
         }
         try {
             switch (action) {
                 case "newproject":
-                    showNewForm(req, resp);
+//                    showNewForm(req, resp);
                     break;
                 case "edit":
                     showEditForm(req, resp);
@@ -62,10 +62,10 @@ public class ProjectServlet extends HttpServlet {
         }
     }
 
-    private void showNewForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("addProject.jsp");
-        dispatcher.forward(request, response);
-    }
+//    private void showNewForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//        RequestDispatcher dispatcher = request.getRequestDispatcher("list.jsp");
+//        dispatcher.forward(request, response);
+//    }
 
 
 

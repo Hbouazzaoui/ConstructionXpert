@@ -1,7 +1,5 @@
 package com.example.constructionxpert.Model;
 
-import java.util.Date;
-
 public class Task {
     private int task_id;
     private int  project_id;
@@ -12,7 +10,7 @@ public class Task {
 
     public Task(int task_id, int project_id, String description, String start_date, String end_date, String resources) {
         this.task_id = task_id;
-        this.project_id = project_id;
+        this.project_id = this.project_id;
         this.description = description;
         this.start_date = start_date;
         this.end_date = end_date;
