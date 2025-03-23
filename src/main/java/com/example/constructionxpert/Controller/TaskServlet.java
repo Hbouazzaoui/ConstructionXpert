@@ -34,6 +34,7 @@ public class TaskServlet extends HttpServlet {
                 showEditTaskForm(req, resp);
                 break;
             case "delete":
+                deleteTask(req, resp);
                 break;
             case "listTasks":
             default:
@@ -171,5 +172,24 @@ public class TaskServlet extends HttpServlet {
         }
     }
 
+    private void deleteTask(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String taskIdParam = request.getParameter("task_id");
+        String projectIdParam = request.getParameter("project_id");
 
+        if (taskIdParam == null || taskIdParam.isEmpty() || projectIdParam == null || projectIdParam.isEmpty()) {
+            // Handle missing parameters
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Task ID and Project ID are required.");
+            return;
+        }
+
+        try {
+            int taskId = Integer.parseInt(taskIdParam);
+            int projectId = Integer.parseInt(projectIdParam);
+            taskDAO.deleteTask(taskId);
+            response.sendRedirect("task?action=listTasks&project_id=" + projectId);
+        } catch (NumberFormatException e) {
+            // Handle invalid parameters
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid Task ID or Project ID.");
+        }
+    }
 }
