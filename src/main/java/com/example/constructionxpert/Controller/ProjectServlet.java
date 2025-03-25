@@ -35,12 +35,6 @@ public class ProjectServlet extends HttpServlet {
         }
         try {
             switch (action) {
-                case "newproject":
-//                    showNewForm(req, resp);
-                    break;
-                case "edit":
-                    showEditForm(req, resp);
-                    break;
                 case "add":
                     addProject(req, resp);
                     break;
@@ -62,12 +56,6 @@ public class ProjectServlet extends HttpServlet {
         }
     }
 
-//    private void showNewForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        RequestDispatcher dispatcher = request.getRequestDispatcher("list.jsp");
-//        dispatcher.forward(request, response);
-//    }
-
-
 
     private void addProject(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String name = req.getParameter("name");
@@ -87,17 +75,6 @@ public class ProjectServlet extends HttpServlet {
         req.setAttribute("projects", projects);
         RequestDispatcher dispatcher = req.getRequestDispatcher("listProjet.jsp");
         dispatcher.forward(req, resp);
-    }
-    private void showEditForm(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
-        int project_id = Integer.parseInt(request.getParameter("project_id"));
-        Project existingProject = projectDAO.getProject(project_id);
-        if (existingProject != null) {
-            request.setAttribute("project", existingProject);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("editProject.jsp");
-            dispatcher.forward(request, response);
-        } else {
-            response.sendRedirect(request.getContextPath() + "/project?action=listProjet");
-        }
     }
     private void updateProject(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
         int projectId = Integer.parseInt(request.getParameter("projectId"));

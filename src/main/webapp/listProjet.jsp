@@ -111,6 +111,7 @@
                     Edit
                 </button>
                 <a href="project?action=delete&projectId=<%= project.getProject_id() %>" class="btn btn-danger btn-sm">Delete</a>
+                <a href="task?action=listTasks&projectId=<%= project.getProject_id() %>" class="btn btn-danger btn-sm">Tasks</a>
             </td>
         </tr>
         <%

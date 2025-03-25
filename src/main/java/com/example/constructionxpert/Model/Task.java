@@ -2,35 +2,38 @@ package com.example.constructionxpert.Model;
 
 public class Task {
     private int task_id;
-    private int  project_id;
+
     private String description;
     private String start_date;
     private String end_date;
     private String resources;
+    private int  project_id;
 
-    public Task(int task_id, int project_id, String description, String start_date, String end_date, String resources) {
+    public Task(int task_id, String description, String start_date, String end_date, String resources, int project_id) {
         this.task_id = task_id;
-        this.project_id = this.project_id;
         this.description = description;
         this.start_date = start_date;
         this.end_date = end_date;
         this.resources = resources;
+        this.project_id = project_id;
     }
 
-    public int getTaskId() {
+    public Task() {
+
+    }
+
+    public Task(int taskId, int projectId, String description, String startDate, String endDate, String resources) {
+
+
+
+    }
+
+    public int getTask_id() {
         return task_id;
     }
 
-    public void setTaskId(int taskId) {
-        this.task_id = taskId;
-    }
-
-    public int getProject_id() {
-        return project_id;
-    }
-
-    public void setProject_id(int project_id) {
-        this.project_id = project_id;
+    public void setTask_id(int task_id) {
+        this.task_id = task_id;
     }
 
     public String getDescription() {
@@ -63,5 +66,13 @@ public class Task {
 
     public void setResources(String resources) {
         this.resources = resources;
+    }
+
+    public int getProject_id() {
+        return project_id;
+    }
+
+    public void setProject_id(int project_id) {
+        this.project_id = project_id;
     }
 }
