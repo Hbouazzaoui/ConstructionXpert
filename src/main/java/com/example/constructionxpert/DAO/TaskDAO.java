@@ -1,6 +1,7 @@
 package com.example.constructionxpert.DAO;
 
 import com.example.constructionxpert.ConnectionDB.Connectiondb;
+import com.example.constructionxpert.Model.Project;
 import com.example.constructionxpert.Model.Task;
 
 import java.sql.*;
@@ -10,15 +11,14 @@ import java.util.List;
 public class TaskDAO {
 
     public void insertTask(Task task) {
-        String insertSql = "INSERT INTO tasks (description, start_date, end_date, resources, project_id) VALUES (?, ?, ?, ?, ?)";
+        String insertSql = "INSERT INTO tasks (description, start_date, end_date) VALUES (?, ?, ?)";
 
         try (Connection connection = Connectiondb.getConnection();
              PreparedStatement insertStmt = connection.prepareStatement(insertSql)) {
             insertStmt.setString(1, task.getDescription());
             insertStmt.setString(2, task.getStart_date());
             insertStmt.setString(3, task.getEnd_date());
-            insertStmt.setString(4, task.getResources());
-            insertStmt.setInt(5, task.getProject_id());
+
             insertStmt.executeUpdate();
             System.out.println("Task inserted successfully!");
         } catch (SQLException ex) {
@@ -41,7 +41,7 @@ public class TaskDAO {
                         rs.getString("description"),
                         rs.getString("start_date"),
                         rs.getString("end_date"),
-                        rs.getString("resources"),
+                        rs.getInt("resource_id"),
                         rs.getInt("project_id")
                 );
             }
@@ -65,7 +65,7 @@ public class TaskDAO {
                         rs.getString("description"),
                         rs.getString("start_date"),
                         rs.getString("end_date"),
-                        rs.getString("resources"),
+                        rs.getInt("resource_id"),
                         rs.getInt("project_id")
                 );
                 tasks.add(task);
@@ -84,7 +84,7 @@ public class TaskDAO {
             stmt.setString(1, task.getDescription());
             stmt.setString(2, task.getStart_date());
             stmt.setString(3, task.getEnd_date());
-            stmt.setString(4, task.getResources());
+            stmt.setInt(4, task.getResource_id());
             stmt.setInt(5, task.getProject_id());
             stmt.setInt(6, task.getTask_id());
             stmt.executeUpdate();

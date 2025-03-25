@@ -77,7 +77,7 @@
             <td><%= task.getDescription() %></td>
             <td><%= task.getStart_date() %></td>
             <td><%= task.getEnd_date() %></td>
-            <td><%= task.getResources() != null ? task.getResources() : "" %></td>
+            <td><%=  task.getResource_id()  %></td>
             <td>
                 <button type="button" class="btn btn-warning btn-sm"
                         data-bs-toggle="modal"
@@ -87,7 +87,7 @@
                         data-description="<%= task.getDescription() %>"
                         data-start-date="<%= task.getStart_date() %>"
                         data-end-date="<%= task.getEnd_date() %>"
-                        data-resources="<%= task.getResources() != null ? task.getResources() : "" %>">
+                        data-resources="<%= task.getResource_id() %>">
                     Edit
                 </button>
                 <a href="task?action=delete&task_id=<%= task.getTask_id() %>&project_id=<%= task.getProject_id() %>"
@@ -141,7 +141,7 @@
 
                     <div class="mb-3">
                         <label for="resources" class="form-label">Resources</label>
-                        <input type="text" class="form-control" id="resources" name="resources">
+                        <input type="hidden" class="form-control" id="resource_id" name="resource_id" value="<%= request.getParameter("resource_id")%>">
                     </div>
 
                     <div class="modal-footer">

@@ -39,7 +39,10 @@ public class Project {
         this.budget = budget;
     }
 
+    public Project(int task_id, int project_id, String description, String startDate, String endDate, String resources) {
 
+
+    }
 
 
     public int getProject_id() {

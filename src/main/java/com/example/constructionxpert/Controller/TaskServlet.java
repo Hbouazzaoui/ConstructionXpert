@@ -1,6 +1,7 @@
 package com.example.constructionxpert.Controller;
 
 import com.example.constructionxpert.DAO.TaskDAO;
+import com.example.constructionxpert.Model.Project;
 import com.example.constructionxpert.Model.Task;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -33,12 +34,6 @@ public class TaskServlet extends HttpServlet {
             case "update":
                 updateTask(req, resp);
                 break;
-            case "newTask":
-                showNewTaskForm(req, resp);
-                break;
-            case "edit":
-                showEditTaskForm(req, resp);
-                break;
             case "delete":
                 deleteTask(req, resp);
                 break;
@@ -60,113 +55,44 @@ public class TaskServlet extends HttpServlet {
         String description = req.getParameter("description");
         String startDate = req.getParameter("start_date");
         String endDate = req.getParameter("end_date");
-        String resources = req.getParameter("resources");
+        int resource_id = Integer.parseInt(req.getParameter("resource_id"));
 
         Task task = new Task();
         task.setProject_id(project_id);
         task.setDescription(description);
         task.setStart_date(startDate);
         task.setEnd_date(endDate);
-        task.setResources(resources);
+        task.setResource_id(resource_id);
 
         taskDAO.insertTask(task);
 
         resp.sendRedirect("task?action=listTasks");
     }
 
-    private void listTasks(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
-        try {
-            List<Task> tasks = taskDAO.getALLTasks();
-            request.setAttribute("tasks", tasks);
-
-            RequestDispatcher dispatcher = request.getRequestDispatcher("task.jsp");
-            dispatcher.forward(request, response);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR,
-                    "Error listing tasks: " + e.getMessage());
-        }
-    }
-
-    private void showNewTaskForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String projectIdParam = request.getParameter("project_id");
-
-        if (projectIdParam == null || projectIdParam.isEmpty()) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Project ID is required.");
-            return;
-        }
-
-        try {
-            int projectId = Integer.parseInt(projectIdParam);
-            request.setAttribute("project_id", projectId);
-            request.getRequestDispatcher("task.jsp").forward(request, response);
-        } catch (NumberFormatException e) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid Project ID.");
-        }
-    }
-
-    private void showEditTaskForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String taskIdParam = request.getParameter("task_id");
-
-        if (taskIdParam == null || taskIdParam.isEmpty()) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Task ID is required.");
-            return;
-        }
-
-        try {
-            int taskId = Integer.parseInt(taskIdParam);
-            Task task = taskDAO.getTasks(taskId);
-            request.setAttribute("task", task);
-            request.getRequestDispatcher("task.jsp").forward(request, response);
-        } catch (NumberFormatException e) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid Task ID.");
-        }
+    private void listTasks(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        List<Task> tasks = taskDAO.getALLTasks();
+        req.setAttribute("tasks", tasks);
+        RequestDispatcher dispatcher = req.getRequestDispatcher("task.jsp");
+        dispatcher.forward(req, resp);
     }
 
     private void updateTask(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String taskIdParam = request.getParameter("task_id");
-        String projectIdParam = request.getParameter("project_id");
+        int task_id = Integer.parseInt(request.getParameter("task_id"));
+        int project_id = Integer.parseInt(request.getParameter("project_id"));
+        String description = request.getParameter("description");
+        String startDate = request.getParameter("start_date");
+        String endDate = request.getParameter("end_date");
+        String resources = request.getParameter("resources");
 
-        if (taskIdParam == null || taskIdParam.isEmpty() || projectIdParam == null || projectIdParam.isEmpty()) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Task ID and Project ID are required.");
-            return;
-        }
+        Task task = new Task(task_id,project_id,description, startDate, endDate, resources);
+        taskDAO.updateTask(task);
 
-        try {
-            int taskId = Integer.parseInt(taskIdParam);
-            int projectId = Integer.parseInt(projectIdParam);
-            String description = request.getParameter("description");
-            String startDate = request.getParameter("start_date");
-            String endDate = request.getParameter("end_date");
-            String resources = request.getParameter("resources");
-
-            Task task = new Task(taskId, projectId, description, startDate, endDate, resources);
-            taskDAO.updateTask(task);
-            response.sendRedirect("task?action=listTasks&project_id=" + projectId);
-        } catch (NumberFormatException e) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid Task ID or Project ID.");
-        }
+        response.sendRedirect(request.getContextPath() + "/task?action=listTask");
     }
 
     private void deleteTask(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String taskIdParam = request.getParameter("task_id");
-        String projectIdParam = request.getParameter("project_id");
-
-        if (taskIdParam == null || taskIdParam.isEmpty() || projectIdParam == null || projectIdParam.isEmpty()) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Task ID and Project ID are required.");
-            return;
-        }
-
-        try {
-            int taskId = Integer.parseInt(taskIdParam);
-            int projectId = Integer.parseInt(projectIdParam);
-            taskDAO.deleteTask(taskId);
-            response.sendRedirect("task?action=listTasks&project_id=" + projectId);
-        } catch (NumberFormatException e) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid Task ID or Project ID.");
-        }
+        int task_id = Integer.parseInt(request.getParameter("projectId"));
+        taskDAO.deleteTask(task_id);
+        response.sendRedirect(request.getContextPath() + "/project?action=listProjet");
     }
 }
