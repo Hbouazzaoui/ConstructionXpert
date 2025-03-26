@@ -31,16 +31,10 @@ public class ProjectServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
         if (action == null) {
-            action = "listProjet";  // Default action
+            action = "listProjet";
         }
         try {
             switch (action) {
-                case "newproject":
-                    showNewForm(req, resp);
-                    break;
-                case "edit":
-                    showEditForm(req, resp);
-                    break;
                 case "add":
                     addProject(req, resp);
                     break;
@@ -54,19 +48,13 @@ public class ProjectServlet extends HttpServlet {
                     deleteProject(req, resp);
                     break;
                 default:
-                    listProjects(req, resp);
+                    resp.sendRedirect(req.getContextPath() + "/index.jsp");
                     break;
             }
         } catch (SQLException e) {
             throw new ServletException("Database error: " + e.getMessage(), e);
         }
     }
-
-    private void showNewForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("addProject.jsp");
-        dispatcher.forward(request, response);
-    }
-
 
 
     private void addProject(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -87,17 +75,6 @@ public class ProjectServlet extends HttpServlet {
         req.setAttribute("projects", projects);
         RequestDispatcher dispatcher = req.getRequestDispatcher("listProjet.jsp");
         dispatcher.forward(req, resp);
-    }
-    private void showEditForm(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
-        int project_id = Integer.parseInt(request.getParameter("project_id"));
-        Project existingProject = projectDAO.getProject(project_id);
-        if (existingProject != null) {
-            request.setAttribute("project", existingProject);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("editProject.jsp");
-            dispatcher.forward(request, response);
-        } else {
-            response.sendRedirect(request.getContextPath() + "/project?action=listProjet");
-        }
     }
     private void updateProject(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
         int projectId = Integer.parseInt(request.getParameter("projectId"));

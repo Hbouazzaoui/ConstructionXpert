@@ -1,31 +1,39 @@
 package com.example.constructionxpert.Model;
 
-import java.util.Date;
-
 public class Task {
-    private int taskId;
+    private int task_id;
     private String description;
-    private Date startDate ;
-    private Date endDate;
+    private String start_date;
+    private String end_date;
+    private int resource_id;
+    private int  project_id;
 
-
-    public Task(int taskId, String description, Date startDate, Date endDate) {
-        this.taskId = taskId;
+    public Task(int task_id, String description, String start_date, String end_date, int resource_id, int project_id)
+    {
+        this.task_id = task_id;
         this.description = description;
-        this.startDate = startDate;
-        this.endDate = endDate;
+        this.start_date = start_date;
+        this.end_date = end_date;
+        this.resource_id = resource_id;
+        this.project_id = project_id;
+    }
+
+    public Task(int task_id, int project_id, String description, String startDate, String endDate, String resources) {
+
+
     }
 
     public Task() {
 
+
     }
 
-    public int getTaskId() {
-        return taskId;
+    public int getTask_id() {
+        return task_id;
     }
 
-    public void setTaskId(int taskId) {
-        this.taskId = taskId;
+    public void setTask_id(int task_id) {
+        this.task_id = task_id;
     }
 
     public String getDescription() {
@@ -36,19 +44,35 @@ public class Task {
         this.description = description;
     }
 
-    public Date getStartDate() {
-        return startDate;
+    public String getStart_date() {
+        return start_date;
     }
 
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
+    public void setStart_date(String start_date) {
+        this.start_date = start_date;
     }
 
-    public Date getEndDate() {
-        return endDate;
+    public String getEnd_date() {
+        return end_date;
     }
 
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
+    public void setEnd_date(String end_date) {
+        this.end_date = end_date;
+    }
+
+    public int getResource_id() {
+        return resource_id;
+    }
+
+    public void setResource_id(int resource_id) {
+        this.resource_id = resource_id;
+    }
+
+    public int getProject_id() {
+        return project_id;
+    }
+
+    public void setProject_id(int project_id) {
+        this.project_id = project_id;
     }
 }
