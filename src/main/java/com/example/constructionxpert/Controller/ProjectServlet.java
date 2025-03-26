@@ -48,7 +48,7 @@ public class ProjectServlet extends HttpServlet {
                     deleteProject(req, resp);
                     break;
                 default:
-                    listProjects(req, resp);
+                    resp.sendRedirect(req.getContextPath() + "/index.jsp");
                     break;
             }
         } catch (SQLException e) {
