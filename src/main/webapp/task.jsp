@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="com.example.constructionxpert.Model.Task" %>
 <%@ page import="java.util.List" %>
+<%@ page import="com.example.constructionxpert.Model.Project" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -307,7 +308,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a href="<%= request.getContextPath() %>/project" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                <li class="nav-item"><a href="<%= request.getContextPath() %>/" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
                 <li class="nav-item"><a href="<%= request.getContextPath() %>/task?action=listTasks&project_id=" class="nav-link"><i class="fas fa-tasks"></i> Tasks</a></li>
                 <li class="nav-item"><a href="<%= request.getContextPath() %>/project" class="nav-link"><i class="fas fa-project-diagram"></i> Projects</a></li>
                 <li class="nav-item"><a href="listressource.jsp" class="nav-link"><i class="fas fa-cogs"></i> Resources</a></li>
@@ -339,7 +340,7 @@
                         <p><strong>Project ID:</strong> <%= task.getProject_id() %></p>
                         <p><strong>Start Date:</strong> <%= task.getStart_date() %></p>
                         <p><strong>End Date:</strong> <%= task.getEnd_date() %></p>
-                        <p><strong>Resources:</strong> <%= task.getResource_id() %></p>
+
                     </div>
                     <div class="task-actions mt-2">
                         <button type="button" class="btn btn-warning btn-sm"
@@ -349,8 +350,7 @@
                                 data-project-id="<%= task.getProject_id() %>"
                                 data-description="<%= task.getDescription() %>"
                                 data-start-date="<%= task.getStart_date() %>"
-                                data-end-date="<%= task.getEnd_date() %>"
-                                data-resources="<%= task.getResource_id() %>">
+                                data-end-date="<%= task.getEnd_date() %>">
                             Edit
                         </button>
                         <a href="task?action=delete&task_id=<%= task.getTask_id() %>&project_id=<%= task.getProject_id() %>"
@@ -386,7 +386,17 @@
             <div class="modal-body">
                 <form action="task" method="post">
                     <input type="hidden" name="action" value="add">
-                    <input type="hidden" name="project_id" value="<%= request.getParameter("project_id") != null ? request.getParameter("project_id") : "" %>">
+
+                    <select class="form-select" name="project_id" aria-label="Default select example">
+                        <%
+                            List<Project> projects = (List<Project>) request.getAttribute("projects");
+
+                            for (Project project : projects) {
+                        %>
+                        <option value="<%=project.getProject_id()%>"><%=project.getName()%></option>
+                        <%}%>
+                    </select>
+
 
                     <div class="mb-3">
                         <label for="description" class="form-label gold-text">Description</label>
