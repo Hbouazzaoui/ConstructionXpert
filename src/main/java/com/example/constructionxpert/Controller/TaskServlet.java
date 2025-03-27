@@ -1,5 +1,6 @@
 package com.example.constructionxpert.Controller;
 
+import com.example.constructionxpert.DAO.ProjectDAO;
 import com.example.constructionxpert.DAO.TaskDAO;
 import com.example.constructionxpert.Model.Project;
 import com.example.constructionxpert.Model.Task;
@@ -14,9 +15,12 @@ import java.util.List;
 public class TaskServlet extends HttpServlet {
 
     private TaskDAO taskDAO;
+    private ProjectDAO projectDAO;
 
     @Override
     public void init() {
+
+        projectDAO = new ProjectDAO();
         taskDAO = new TaskDAO();
     }
 
@@ -55,23 +59,19 @@ public class TaskServlet extends HttpServlet {
         String description = req.getParameter("description");
         String startDate = req.getParameter("start_date");
         String endDate = req.getParameter("end_date");
-        int resource_id = Integer.parseInt(req.getParameter("resource_id"));
-
-        Task task = new Task();
-        task.setProject_id(project_id);
-        task.setDescription(description);
-        task.setStart_date(startDate);
-        task.setEnd_date(endDate);
-        task.setResource_id(resource_id);
+        Task task = new Task(project_id,description,startDate,endDate);
 
         taskDAO.insertTask(task);
 
         resp.sendRedirect("task?action=listTasks");
     }
 
+
     private void listTasks(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Task> tasks = taskDAO.getALLTasks();
+        List<Project> projects = projectDAO.getAllProjects();
         req.setAttribute("tasks", tasks);
+        req.setAttribute("projects", projects);
         RequestDispatcher dispatcher = req.getRequestDispatcher("task.jsp");
         dispatcher.forward(req, resp);
     }
@@ -91,8 +91,8 @@ public class TaskServlet extends HttpServlet {
     }
 
     private void deleteTask(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        int task_id = Integer.parseInt(request.getParameter("projectId"));
+        int task_id = Integer.parseInt(request.getParameter("project_id"));
         taskDAO.deleteTask(task_id);
-        response.sendRedirect(request.getContextPath() + "/project?action=listProjet");
+        response.sendRedirect(request.getContextPath() + "/task?action=listTask");
     }
 }

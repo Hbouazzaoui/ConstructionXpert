@@ -5,16 +5,21 @@ public class Task {
     private String description;
     private String start_date;
     private String end_date;
-    private int resource_id;
     private int  project_id;
+    public Task(int project_id, String description, String startDate, String endDate) {
+        this.project_id=project_id;
+        this.description=description;
+        this.start_date=startDate;
+        this.end_date=endDate;
 
-    public Task(int task_id, String description, String start_date, String end_date, int resource_id, int project_id)
+
+    }
+    public Task(int task_id, String description, String start_date, String end_date, int project_id)
     {
         this.task_id = task_id;
         this.description = description;
         this.start_date = start_date;
         this.end_date = end_date;
-        this.resource_id = resource_id;
         this.project_id = project_id;
     }
 
@@ -27,6 +32,8 @@ public class Task {
 
 
     }
+
+
 
     public int getTask_id() {
         return task_id;
@@ -58,14 +65,6 @@ public class Task {
 
     public void setEnd_date(String end_date) {
         this.end_date = end_date;
-    }
-
-    public int getResource_id() {
-        return resource_id;
-    }
-
-    public void setResource_id(int resource_id) {
-        this.resource_id = resource_id;
     }
 
     public int getProject_id() {

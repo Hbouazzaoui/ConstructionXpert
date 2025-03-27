@@ -26,8 +26,13 @@
 
         /* Navbar Styling */
         .navbar {
-            background-color: #ffd107; /* Yellow navbar */
+            background-color: #ffd107;
             padding: 10px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
         }
 
         .navbar-brand {
@@ -42,7 +47,7 @@
 
         .nav-link:hover {
             background: rgba(255, 255, 255, 0.71);
-            color: #ffd107 !important;
+            color: #0b0e21 !important;
             border-radius: 16px;
             font-size: 14px;
         }
@@ -51,19 +56,19 @@
         #home {
             position: relative;
             height: 100vh;
-            width: 100vw; /* Full viewport width */
+            width: 100vw;
             display: flex;
             justify-content: center;
             align-items: center;
-            margin: 0; /* Remove any default margins */
-            padding: 0; /* Remove any default padding */
+            margin: 0;
+            padding: 0;
         }
 
         .container-fluid {
             width: 100%;
             height: 100%;
-            margin: 0; /* Remove Bootstrap's default margins */
-            padding: 0; /* Remove Bootstrap's default padding */
+            margin: 0;
+            padding: 0;
         }
 
         .hero-section {
@@ -80,7 +85,7 @@
             top: 0;
             left: 0;
             z-index: 1;
-            filter: brightness(0.7); /* Slightly darken the image for better text readability */
+            filter: brightness(0.7);
         }
 
         .hero-content {
@@ -454,8 +459,8 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a href="<%= request.getContextPath() %>/project" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
-                <li class="nav-item"><a href="<%= request.getContextPath() %>/task?action=listTasks&project_id=" class="nav-link"><i class="fas fa-tasks"></i> Tasks</a></li>
+                <li class="nav-item"><a href="<%= request.getContextPath() %>/" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                <li class="nav-item"><a href="task" class="nav-link"><i class="fas fa-tasks"></i> Tasks</a></li>
                 <li class="nav-item"><a href="#recent" class="nav-link"><i class="far fa-clock"></i> Recent</a></li>
                 <li class="nav-item"><a href="<%= request.getContextPath() %>/project" class="nav-link"><i class="fas fa-project-diagram"></i> Projects</a></li>
                 <li class="nav-item"><a href="listressource.jsp" class="nav-link"><i class="fas fa-cogs"></i> Resources</a></li>
