@@ -48,3 +48,30 @@ document.addEventListener("DOMContentLoaded", function() {
         element.classList.add("animate");
     });
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Get all elements with the 'animatable' class
+    const animatables = document.querySelectorAll('.animatable');
+
+    // Add show class to each with a delay
+    animatables.forEach((el, index) => {
+        setTimeout(() => {
+            el.classList.remove('hidden');
+            el.classList.add('show', 'animate');
+        }, 150 * index);
+    });
+
+    // Project modal functions (keep these if you need them)
+    window.openProjectModal = function(imageUrl, title, description) {
+        const modal = document.getElementById('projectModal');
+        const modalContent = document.getElementById('projectModalContent');
+        document.getElementById('projectTitle').textContent = title;
+        document.getElementById('projectDescription').textContent = description;
+        modalContent.style.backgroundImage = `url(${imageUrl})`;
+        modal.style.display = 'flex';
+    };
+
+    window.closeProjectModal = function() {
+        document.getElementById('projectModal').style.display = 'none';
+    };
+});

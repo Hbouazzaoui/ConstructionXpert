@@ -18,6 +18,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
     <style>
         <%@include file="assets/css/resorce.css"%>
+<%--        <%@include file="assets/css/indx.css"%>--%>
     </style>
 </head>
 <body>
@@ -39,15 +40,22 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a href="<%= request.getContextPath() %>/" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
-                <li class="nav-item"><a href="task" class="nav-link"><i class="fas fa-tasks"></i> Tasks</a></li>
-                <li class="nav-item"><a href="<%= request.getContextPath() %>/project" class="nav-link"><i class="fas fa-project-diagram"></i> Projects</a></li>
-                <li class="nav-item"><a href="<%= request.getContextPath() %>/resource" class="nav-link active"><i class="fas fa-cogs"></i> Resources</a></li>
                 <li class="nav-item">
                     <button class="theme-toggle nav-link" id="themeToggle">
                         <i class="fas fa-moon"></i>
                     </button>
                 </li>
+                <li class="nav-item"><a href="<%= request.getContextPath() %>/" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                <li class="nav-item"><a href="#recent" class="nav-link"><i class="far fa-clock"></i> Recent</a></li>
+                <li class="nav-item"><a href="task" class="nav-link"><i class="fas fa-tasks"></i> Tasks</a></li>
+                <li class="nav-item"><a href="<%= request.getContextPath() %>/project" class="nav-link"><i class="fas fa-project-diagram"></i> Projects</a></li>
+                <li class="nav-item"><a href="<%= request.getContextPath() %>/resource" class="nav-link active"><i class="fas fa-cogs"></i> Resources</a></li>
+                <li class="nav-item">
+                    <a href="<%= request.getContextPath() %>/logout" class="nav-link logout-link">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </a>
+                </li>
+
             </ul>
         </div>
     </div>

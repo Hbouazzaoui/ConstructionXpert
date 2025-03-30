@@ -16,6 +16,7 @@
     <!-- Custom CSS -->
     <style>
         <%@include file="assets/css/task.css"%>
+<%--        <%@include file="assets/css/indx.css"%>--%>
     </style>
 </head>
 <body>
@@ -37,14 +38,20 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a href="<%= request.getContextPath() %>/" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
-                <li class="nav-item"><a href="<%= request.getContextPath() %>/task?action=listTasks&project_id=" class="nav-link"><i class="fas fa-tasks"></i> Tasks</a></li>
-                <li class="nav-item"><a href="<%= request.getContextPath() %>/project" class="nav-link"><i class="fas fa-project-diagram"></i> Projects</a></li>
-                <li class="nav-item"><a href="<%= request.getContextPath() %>/resource" class="nav-link"><i class="fas fa-cogs"></i> Resources</a></li>
                 <li class="nav-item">
                     <button class="theme-toggle nav-link" id="themeToggle">
                         <i class="fas fa-moon"></i>
                     </button>
+                </li>
+                <li class="nav-item"><a href="<%= request.getContextPath() %>/" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                <li class="nav-item"><a href="#recent" class="nav-link"><i class="far fa-clock"></i> Recent</a></li>
+                <li class="nav-item"><a href="<%= request.getContextPath() %>/task?action=listTasks&project_id=" class="nav-link"><i class="fas fa-tasks"></i> Tasks</a></li>
+                <li class="nav-item"><a href="<%= request.getContextPath() %>/project" class="nav-link"><i class="fas fa-project-diagram"></i> Projects</a></li>
+                <li class="nav-item"><a href="<%= request.getContextPath() %>/resource" class="nav-link"><i class="fas fa-cogs"></i> Resources</a></li>
+                <li class="nav-item">
+                    <a href="<%= request.getContextPath() %>/logout" class="nav-link logout-link">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </a>
                 </li>
             </ul>
         </div>
@@ -208,7 +215,6 @@
             <p>We are a leading construction company dedicated to delivering exceptional projects with precision and quality.</p>
         </div>
         <div class="footer-section">
-            <h5露: 1rem;
             <h5>Quick Links</h5>
             <ul>
                 <li><a href="<%= request.getContextPath() %>/project">Home</a></li>

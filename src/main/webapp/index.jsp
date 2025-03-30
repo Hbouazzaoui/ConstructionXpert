@@ -34,15 +34,20 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a href="<%= request.getContextPath() %>/" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
-                <li class="nav-item"><a href="task" class="nav-link"><i class="fas fa-tasks"></i> Tasks</a></li>
-                <li class="nav-item"><a href="#recent" class="nav-link"><i class="far fa-clock"></i> Recent</a></li>
-                <li class="nav-item"><a href="<%= request.getContextPath() %>/project" class="nav-link"><i class="fas fa-project-diagram"></i> Projects</a></li>
-                <li class="nav-item"><a href="<%= request.getContextPath() %>/resource" class="nav-link"><i class="fas fa-cogs"></i> Resources</a></li>
                 <li class="nav-item">
                     <button class="theme-toggle nav-link" id="themeToggle">
                         <i class="fas fa-moon"></i>
                     </button>
+                </li>
+                <li class="nav-item"><a href="<%= request.getContextPath() %>/" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                <li class="nav-item"><a href="#recent" class="nav-link"><i class="far fa-clock"></i> Recent</a></li>
+                <li class="nav-item"><a href="task" class="nav-link"><i class="fas fa-tasks"></i> Tasks</a></li>
+                <li class="nav-item"><a href="<%= request.getContextPath() %>/project" class="nav-link"><i class="fas fa-project-diagram"></i> Projects</a></li>
+                <li class="nav-item"><a href="<%= request.getContextPath() %>/resource" class="nav-link"><i class="fas fa-cogs"></i> Resources</a></li>
+                <li class="nav-item">
+                    <a href="<%= request.getContextPath() %>/logout" class="nav-link logout-link">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </a>
                 </li>
             </ul>
         </div>
@@ -55,10 +60,12 @@
         <div class="hero-section">
             <img src="images/homeimge.jpg" alt="Construction professionals working on blueprints" class="hero-image">
             <div class="hero-content">
-                <h1>Edifice Experienced Construction Professionals</h1>
+                <div class="h1-container">
+                    <h1 class="h1 animatable hidden">Edifice Experienced Construction Professionals</h1>
+                </div>
                 <div class="button-group">
-                    <a href="#project" class="btn btn-primary">See Projects</a>
-                    <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#contactUsModal">Contact Us</button>
+                    <a href="#project" class="btn btn-primary animatable hidden" style="animation-delay: 0.5s">See Projects</a>
+                    <button class="btn btn-secondary animatable hidden" style="animation-delay: 0.7s" data-bs-toggle="modal" data-bs-target="#contactUsModal">Contact Us</button>
                 </div>
             </div>
         </div>

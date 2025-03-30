@@ -28,6 +28,50 @@ body.dark-mode {
     z-index: 1000;
 }
 
+/* Navbar Item Styling (already in your CSS, just ensuring consistency) */
+.nav-item {
+    margin: 0 0.5rem; /* Adds spacing between nav items */
+}
+
+/* Logout Link Specific Styling */
+.logout-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* Space between icon and text */
+    color: #090808 !important; /* Light mode color */
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    font-weight: 500; /* Slightly bold for emphasis */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+body.dark-mode .logout-link {
+    color: #e0e0e0 !important; /* Dark mode text color */
+}
+
+/* Hover Effect */
+.logout-link:hover {
+    background: rgba(255, 255, 255, 0.71);
+    color: #0b0e21 !important;
+    border-radius: 16px;
+    transform: translateY(-2px); /* Slight lift on hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+body.dark-mode .logout-link:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffd107 !important; /* Yellow accent in dark mode */
+}
+
+/* Icon Styling */
+.logout-link i {
+    font-size: 1.1rem; /* Slightly larger icon */
+    transition: transform 0.3s ease; /* Smooth icon animation */
+}
+
+.logout-link:hover i {
+    transform: rotate(45deg); /* Fun rotation effect on hover */
+}
 body.dark-mode .navbar {
     background-color: #2a3439; /* Dark mode navbar */
 }
@@ -164,7 +208,7 @@ body.dark-mode .hero-image {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    /*transition: background-color 0.3s ease;*/
 }
 
 .btn-primary {
@@ -920,11 +964,7 @@ body.dark-mode .news-section .carousel-indicators span {
     position: relative;
     margin-bottom: 20px;
 }
-.image1-container, .image2-container {
-    display: inline-block;
-    width: 50%;
-    position: relative;
-}
+
 
 /* Hidden classes */
 .h1.hidden {
@@ -935,48 +975,95 @@ body.dark-mode .news-section .carousel-indicators span {
     transform: translateY(100%);
     opacity: 0;
 }
-.image1.hidden {
-    transform: translateX(100%);
+
+
+/* Animation Classes */
+.hidden {
     opacity: 0;
-}
-.image2.hidden {
+    filter: blur(5px);
     transform: translateX(-100%);
-    opacity: 0;
+    transition: all 1s;
 }
 
-/* Animate classes */
-.h1.animate {
-    animation: slideInAndBounce 1s ease forwards;
-}
-.p.animate {
-    animation: slideInFromBottom 1s ease forwards;
-    animation-delay: 0.5s;
-}
-.image1.animate {
-    animation: slideInFromRight 1s ease forwards;
-    animation-delay: 1s;
-}
-.image2.animate {
-    animation: slideInFromLeft 1s ease forwards;
-    animation-delay: 1.5s;
+.show {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0);
 }
 
-/* Keyframes */
-@keyframes slideInAndBounce {
-    0% { transform: translateX(-100%) scale(1); opacity: 0; }
-    50% { transform: translateX(0) scale(1.1); opacity: 1; }
-    70% { transform: translateX(0) scale(0.9); }
-    100% { transform: translateX(0) scale(1); }
+/* Individual Animation Delays */
+.h1.animatable {
+    transition-delay: 200ms;
 }
-@keyframes slideInFromBottom {
-    0% { transform: translateY(100%); opacity: 0; }
-    100% { transform: translateY(0); opacity: 1; }
+
+.btn-primary.animatable {
+    transition-delay: 400ms;
 }
-@keyframes slideInFromRight {
-    0% { transform: translateX(100%); opacity: 0; }
-    100% { transform: translateX(0); opacity: 1; }
+
+.btn-secondary.animatable {
+    transition-delay: 600ms;
 }
+
+
+
+/* Keyframe Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
 @keyframes slideInFromLeft {
-    0% { transform: translateX(-100%); opacity: 0; }
-    100% { transform: translateX(0); opacity: 1; }
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromRight {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromBottom {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Apply Animations */
+.h1.animate {
+    animation: slideInFromLeft 1s ease-out forwards;
+}
+
+.btn-primary.animate {
+    animation: slideInFromBottom 0.8s ease-out forwards;
+}
+
+.btn-secondary.animate {
+    animation: slideInFromBottom 0.8s ease-out forwards;
+}
+.btn-primary {
+    background-color: #f5c518;
+    color: black;
+    font-weight: bold;
+}
+.button-group a {
+    background-color: #f5c518;
+    color: black;
+    font-weight: bold;
 }

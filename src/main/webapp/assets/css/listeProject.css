@@ -414,3 +414,42 @@ footer .footer-bottom {
         justify-content: center;
     }
 }
+/* Logout Link Specific Styling */
+.logout-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* Space between icon and text */
+    color: #090808 !important; /* Light mode color */
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    font-weight: 500; /* Slightly bold for emphasis */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+body.dark-mode .logout-link {
+    color: #e0e0e0 !important; /* Dark mode text color */
+}
+
+/* Hover Effect */
+.logout-link:hover {
+    background: rgba(255, 255, 255, 0.71);
+    color: #0b0e21 !important;
+    border-radius: 16px;
+    transform: translateY(-2px); /* Slight lift on hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+body.dark-mode .logout-link:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffd107 !important; /* Yellow accent in dark mode */
+}
+
+/* Icon Styling */
+.logout-link i {
+    font-size: 1.1rem; /* Slightly larger icon */
+    transition: transform 0.3s ease; /* Smooth icon animation */
+}
+
+.logout-link:hover i {
+    transform: rotate(45deg); /* Fun rotation effect on hover */
+}
