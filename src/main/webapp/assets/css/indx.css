@@ -1,0 +1,787 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for theme change */
+}
+
+body {
+    overflow-x: hidden;
+    background-color: #fff8e1; /* Light mode background */
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #1c2526; /* Dark gray background */
+    color: #e0e0e0; /* Light text for dark mode */
+}
+
+/* Navbar Styling */
+.navbar {
+    background-color: #ffd107; /* Light mode navbar */
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+body.dark-mode .navbar {
+    background-color: #2a3439; /* Dark mode navbar */
+}
+
+.navbar-brand {
+    font-weight: bold;
+    color: #090808 !important;
+}
+
+body.dark-mode .navbar-brand {
+    color: #ffd107 !important; /* Yellow text in dark mode */
+}
+
+.nav-link {
+    color: #090808 !important;
+    padding: 0.5rem 1rem;
+}
+
+body.dark-mode .nav-link {
+    color: #e0e0e0 !important; /* Light text in dark mode */
+}
+
+.nav-link:hover {
+    background: rgba(255, 255, 255, 0.71);
+    color: #0b0e21 !important;
+    border-radius: 16px;
+    font-size: 14px;
+}
+
+body.dark-mode .nav-link:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffd107 !important;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    background: none;
+    border: none;
+    /*font-size: 1.5rem;*/
+    font-size: 16px;
+    cursor: pointer;
+    color: #090808;
+}
+.theme-toggle:hover{
+    font-size: 14px;
+    border-radius: 14px;
+    color: #0b0e21;
+}
+body.dark-mode .theme-toggle{
+    font-size: 14px;
+    border-radius: 14px;
+    color: #ffd107;
+}
+
+body.dark-mode .theme-toggle {
+    color: #ffd107;
+    border-radius: 14px;
+
+}
+
+/* Hero Section */
+#home {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.container-fluid {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    filter: brightness(0.7);
+}
+
+body.dark-mode .hero-image {
+    filter: brightness(0.5); /* Slightly darker in dark mode for better contrast */
+}
+
+.hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    z-index: 2;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.button-group {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.btn {
+    padding: 0.8rem 2rem;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #f5c518;
+    color: black;
+    font-weight: bold;
+}
+
+body.dark-mode .btn-primary {
+    background-color: #d4a017;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #e0b015;
+}
+
+body.dark-mode .btn-primary:hover {
+    background-color: #b58b14;
+}
+
+.btn-secondary {
+    background-color: #333;
+    color: white;
+    font-weight: bold;
+}
+
+body.dark-mode .btn-secondary {
+    background-color: #495057;
+}
+
+.btn-secondary:hover {
+    background-color: #555;
+}
+
+body.dark-mode .btn-secondary:hover {
+    background-color: #5c666b;
+}
+
+/* Dashboard Section */
+.dashboard-section {
+    position: relative;
+    padding: 5rem 0;
+    background-image: url('images/sketch-new-construction.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.dashboard-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+body.dark-mode .dashboard-section::before {
+    background: rgba(0, 0, 0, 0.7); /* Darker overlay in dark mode */
+}
+
+.dashboard-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+.dashboard-section h5 {
+    color: white;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 4px rgb(11, 14, 33);
+}
+
+.card {
+    background-color: #f5c518;
+    border: none;
+    border-radius: 15px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    color: #333;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode .card {
+    background-color: #2a3439;
+    color: #e0e0e0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card i {
+    margin-bottom: 1rem;
+    display: inline-block;
+}
+
+.card h5 {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.card p {
+    font-size: 1rem;
+    margin: 0;
+}
+
+.text-warning {
+    color: #ffc107 !important;
+}
+
+body.dark-mode .text-warning {
+    color: #d4a017 !important;
+}
+
+/* Task Cards Section */
+.task-cards-section {
+    position: relative;
+    padding: 5rem 0;
+    background-image: url('images/discussing-blueprint.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.task-cards-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+body.dark-mode .task-cards-section::before {
+    background: rgba(0, 0, 0, 0.7); /* Darker overlay in dark mode */
+}
+
+.task-cards-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+.task-cards-section h5 {
+    color: white;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 4px rgb(11, 14, 33);
+}
+
+.task-card {
+    background-color: rgba(255, 255, 255, 0.73);
+    border: none;
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+    color: #333;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+body.dark-mode .task-card {
+    background-color: #2a3439;
+    color: #e0e0e0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.task-card:hover {
+    transform: scale(1.05);
+}
+
+.task-card .task-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.task-card .task-header h6 {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+body.dark-mode .task-card .task-header h6 {
+    color: #e0e0e0;
+}
+
+.task-card .task-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.task-card .task-details p {
+    margin: 0;
+    font-size: 0.95rem;
+    flex: 1 1 45%;
+}
+
+.task-card .task-details p strong {
+    display: inline-block;
+    width: 100px;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 3rem 0;
+}
+
+body.dark-mode footer {
+    background-color: #2b2f2f;
+}
+
+footer .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+footer .footer-section {
+    flex: 1 1 200px;
+}
+
+footer .footer-section h5 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #ffd107;
+}
+
+footer .footer-section p {
+    font-size: 0.95rem;
+    margin: 0.5rem 0;
+}
+
+footer .footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+footer .footer-section ul li {
+    margin-bottom: 0.5rem;
+}
+
+footer .footer-section ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+}
+
+footer .footer-section ul li a:hover {
+    color: #ffd107;
+}
+
+footer .footer-section .social-icons {
+    display: flex;
+    gap: 1rem;
+}
+
+footer .footer-section .social-icons a {
+    color: #fff;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+footer .footer-section .social-icons a:hover {
+    color: #ffd107;
+}
+
+footer .footer-bottom {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+}
+
+/* Our Projects Section */
+.projects-section {
+    padding: 5rem 0;
+    background-color: #fff;
+}
+
+body.dark-mode .projects-section {
+    background-color: #1c2526;
+}
+
+.projects-section h5 {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    position: relative;
+    color: #333;
+}
+
+body.dark-mode .projects-section h5 {
+    color: #e0e0e0;
+}
+
+.projects-section h5::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 2px;
+    background-color: #f5c518;
+}
+
+body.dark-mode .projects-section h5::after {
+    background-color: #d4a017;
+}
+
+.projects-section .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.projects-section .project-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.projects-section .project-img:hover {
+    transform: scale(1.05);
+}
+
+/* Project Modal Styling */
+.project-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+}
+
+.project-modal-content {
+    position: relative;
+    width: 80%;
+    max-width: 800px;
+    height: 500px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding: 2rem;
+}
+
+.project-modal-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    border-radius: 10px;
+}
+
+.project-modal-content > * {
+    position: relative;
+    z-index: 2;
+}
+
+.project-modal-content h3 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.project-modal-content p {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+}
+
+.project-modal-content .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    background: #f5c518;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.3s ease;
+}
+
+body.dark-mode .project-modal-content .close-btn {
+    background: #d4a017;
+}
+
+.project-modal-content .close-btn:hover {
+    background: #e0b015;
+}
+
+body.dark-mode .project-modal-content .close-btn:hover {
+    background: #b58b14;
+}
+
+/* Recent News Section */
+.news-section {
+    padding: 5rem 0;
+    background-color: #fff;
+}
+
+body.dark-mode .news-section {
+    background-color: #1c2526;
+}
+
+.news-section h5 {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    position: relative;
+    color: #333;
+}
+
+body.dark-mode .news-section h5 {
+    color: #e0e0e0;
+}
+
+.news-section h5::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 2px;
+    background-color: #f5c518;
+}
+
+body.dark-mode .news-section h5::after {
+    background-color: #d4a017;
+}
+
+.news-section .news-card {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.news-section .news-card img {
+    width: 100%;
+    max-width: 300px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin: 1rem auto;
+}
+
+.news-section .news-card .news-content {
+    flex: 1;
+}
+
+.news-section .news-card .news-content h6 {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+body.dark-mode .news-section .news-card .news-content h6 {
+    color: #e0e0e0;
+}
+
+.news-section .news-card .news-content .meta {
+    font-size: 0.85rem;
+    color: #f5c518;
+    margin-bottom: 0.5rem;
+}
+
+body.dark-mode .news-section .news-card .news-content .meta {
+    color: #d4a017;
+}
+
+.news-section .news-card .news-content p {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 0;
+}
+
+body.dark-mode .news-section .news-card .news-content p {
+    color: #a0a0a0;
+}
+
+.news-section .carousel-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 2rem;
+}
+
+.news-section .carousel-indicators span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #ccc;
+    cursor: pointer;
+}
+
+body.dark-mode .news-section .carousel-indicators span {
+    background-color: #555;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .btn {
+        padding: 0.6rem 1.5rem;
+        font-size: 1rem;
+    }
+
+    .dashboard-section,
+    .task-cards-section,
+    .projects-section,
+    .news-section {
+        padding: 3rem 0;
+    }
+
+    .card,
+    .task-card {
+        margin-bottom: 1.5rem;
+    }
+
+    .card h5 {
+        font-size: 1.1rem;
+    }
+
+    .card p {
+        font-size: 0.9rem;
+    }
+
+    .task-card .task-details p {
+        flex: 1 1 100%;
+    }
+
+    .projects-section .col-md-4 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .projects-section .project-img {
+        height: 150px;
+    }
+
+    .news-section .news-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .news-section .news-card img {
+        max-width: 100%;
+        height: 200px;
+    }
+
+    footer .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    footer .footer-section {
+        margin-bottom: 2rem;
+    }
+
+    footer .footer-section .social-icons {
+        justify-content: center;
+    }
+}

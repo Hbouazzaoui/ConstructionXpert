@@ -94,9 +94,9 @@ public class TaskDAO {
     }
 
     public void deleteTask(int task_id) {
-        try {
-            String sql = "DELETE FROM tasks WHERE task_id = ?";
-            PreparedStatement stmt = Connectiondb.getConnection().prepareStatement(sql);
+        String sql = "DELETE FROM tasks WHERE task_id = ?";
+        try (Connection connection = Connectiondb.getConnection();
+             PreparedStatement stmt = connection.prepareStatement(sql)){
             stmt.setInt(1, task_id);
             stmt.executeUpdate();
         } catch (SQLException e) {

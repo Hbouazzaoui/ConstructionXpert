@@ -91,7 +91,7 @@ public class TaskServlet extends HttpServlet {
     }
 
     private void deleteTask(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        int task_id = Integer.parseInt(request.getParameter("project_id"));
+        int task_id = Integer.parseInt(request.getParameter("task_id"));
         taskDAO.deleteTask(task_id);
         response.sendRedirect(request.getContextPath() + "/task?action=listTask");
     }

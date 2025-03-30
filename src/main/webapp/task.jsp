@@ -293,6 +293,37 @@
             footer .footer-section .social-icons {
                 justify-content: center;
             }
+            .navbar-brand {
+                display: flex;
+                align-items: center;
+                font-family: 'Arial', sans-serif;
+                font-size: 1.25rem;
+                font-weight: 700;
+            }
+
+            .navbar-brand img {
+                height: 40px;
+                margin-right: 10px;
+                transition: transform 0.3s ease;
+            }
+
+            .navbar-brand:hover img {
+                transform: rotate(-5deg);
+            }
+
+            .navbar-brand span {
+                background: linear-gradient(to right, #090808 50%, #f5c518 50%);
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+                background-size: 200% 100%;
+                background-position: right;
+                transition: background-position 0.5s ease;
+            }
+
+            .navbar-brand:hover span {
+                background-position: left;
+            }
         }
     </style>
 </head>
@@ -301,7 +332,14 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">ConstructionXpert</a>
+        <a class="navbar-brand" href="#" style="display: flex; align-items: center;">
+            <div style="display: flex; margin-right: 10px;">
+                <div style="width: 8px; height: 16px; background: rgb(11,14,33); margin-right: 4px;"></div>
+                <div style="width: 8px; height: 12px; background: #090808; margin-right: 4px; align-self: flex-end;"></div>
+                <div style="width: 8px; height: 20px; background: #090808;"></div>
+            </div>
+            <span style="font-weight: 700; letter-spacing: 0.5px;">CONSTRUCTION<span style="color: #ffffff;">XPERT</span></span>
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -413,11 +451,6 @@
                         <input type="date" class="form-control" id="end_date" name="end_date" required>
                     </div>
 
-                    <div class="mb-3">
-                        <label for="resources" class="form-label gold-text">Resources</label>
-                        <input type="hidden" class="form-control" id="resource_id" name="resource_id" value="<%= request.getParameter("resource_id")%>">
-                    </div>
-
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn gold-btn">Add Task</button>
@@ -462,10 +495,6 @@
                         </div>
                     </div>
 
-                    <div class="mb-4">
-                        <label for="updateResources" class="form-label gold-text">Resources</label>
-                        <input type="text" class="form-control" id="updateResources" name="resources">
-                    </div>
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

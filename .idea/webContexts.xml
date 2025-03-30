@@ -5,8 +5,10 @@
       <map>
         <entry key="file://$PROJECT_DIR$/src/main/webapp/Projetxpert/Update.jsp" value="file://$PROJECT_DIR$/src/main/webapp/Projetxpert" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/Projetxpert/listProjet.jsp" value="file://$PROJECT_DIR$/src/main/webapp/Projetxpert" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/assets/css" value="file://$PROJECT_DIR$/src/main/webapp" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/dashboard.jsp" value="file://$PROJECT_DIR$/src/main/webapp" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/listProjet.jsp" value="file://$PROJECT_DIR$/src/main/webapp" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/ressourceList.jsp" value="file://$PROJECT_DIR$/src/main/webapp" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/task.jsp" value="file://$PROJECT_DIR$/src/main/webapp" />
       </map>
     </option>

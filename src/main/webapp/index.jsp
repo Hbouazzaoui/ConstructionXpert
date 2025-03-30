@@ -12,439 +12,7 @@
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <!-- Custom CSS -->
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-        }
-
-        body {
-            overflow-x: hidden;
-            background-color: #fff8e1; /* Light yellowish background */
-        }
-
-        /* Navbar Styling */
-        .navbar {
-            background-color: #ffd107;
-            padding: 10px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-        }
-
-        .navbar-brand {
-            font-weight: bold;
-            color: #090808 !important;
-        }
-
-        .nav-link {
-            color: #090808 !important;
-            padding: 0.5rem 1rem;
-        }
-
-        .nav-link:hover {
-            background: rgba(255, 255, 255, 0.71);
-            color: #0b0e21 !important;
-            border-radius: 16px;
-            font-size: 14px;
-        }
-
-        /* Hero Section */
-        #home {
-            position: relative;
-            height: 100vh;
-            width: 100vw;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 0;
-            padding: 0;
-        }
-
-        .container-fluid {
-            width: 100%;
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
-
-        .hero-section {
-            position: relative;
-            width: 100%;
-            height: 100%;
-        }
-
-        .hero-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 1;
-            filter: brightness(0.7);
-        }
-
-        .hero-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            color: white;
-            z-index: 2;
-        }
-
-        .hero-content h1 {
-            font-size: 3rem; /* Adjusted to match the image */
-            font-weight: 900; /* Extra bold to match the image */
-            line-height: 1.1; /* Tighter line height */
-            margin-bottom: 1.5rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add shadow for better readability */
-        }
-
-        .hero-content p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-        }
-
-        .button-group {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-        }
-
-        .btn {
-            padding: 0.8rem 2rem;
-            font-size: 1.1rem;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .btn-primary {
-            background-color: #f5c518; /* Yellow button like in the image */
-            color: black;
-            font-weight: bold;
-        }
-
-        .btn-primary:hover {
-            background-color: #e0b015;
-        }
-
-        .btn-secondary {
-            background-color: #333; /* Dark button like in the image */
-            color: white;
-            font-weight: bold;
-        }
-
-        .btn-secondary:hover {
-            background-color: #555;
-        }
-
-        /* Dashboard Section */
-        .dashboard-section {
-            position: relative;
-            padding: 5rem 0;
-            background-image: url('images/sketch-new-construction.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed; /* Optional: for a parallax effect */
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-        }
-
-        .dashboard-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5); /* Dark overlay */
-            z-index: 1;
-        }
-
-        .dashboard-section .container {
-            position: relative;
-            z-index: 2;
-        }
-
-        .dashboard-section h5 {
-            color: white;
-            text-align: center;
-            font-size: 2rem;
-            font-weight: bold;
-            margin-bottom: 2rem;
-            text-shadow: 2px 2px 4px rgb(11, 14, 33);
-        }
-
-        .card {
-            background-color: #f5c518; /* Yellow background like in the images */
-            border: none;
-            border-radius: 15px; /* Rounded corners */
-            text-align: center;
-            transition: transform 0.3s ease;
-            color: #333; /* Dark text for contrast */
-            box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .card:hover {
-            transform: scale(1.05); /* Matches your hover effect */
-        }
-
-        .card i {
-            margin-bottom: 1rem;
-            display: inline-block; /* Ensure the icon is treated as a block element */
-        }
-
-        .card h5 {
-            font-size: 1.25rem;
-            font-weight: bold;
-        }
-
-        .card p {
-            font-size: 1rem;
-            margin: 0;
-        }
-
-        .text-warning {
-            color: #ffc107 !important; /* Bootstrap's warning color */
-        }
-
-        /* Task Cards Section */
-        .task-cards-section {
-            position: relative;
-            padding: 5rem 0;
-            background-image: url('images/discussing-blueprint.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed; /* Optional: for a parallax effect */
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-        }
-
-        .task-cards-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-
-        .task-cards-section .container {
-            position: relative;
-            z-index: 2;
-        }
-
-        .task-cards-section h5 {
-            color: white;
-            text-align: center;
-            font-size: 2rem;
-            font-weight: bold;
-            margin-bottom: 2rem;
-            text-shadow: 2px 2px 4px rgb(11, 14, 33);
-        }
-
-        .task-card {
-            background-color: rgba(255, 255, 255, 0.73); /* Semi-transparent white background */
-            border: none;
-            border-radius: 15px; /* Rounded corners */
-            transition: transform 0.3s ease;
-            color: #333; /* Dark text for contrast */
-            box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .task-card:hover {
-            transform: scale(1.05); /* Matches your hover effect */
-        }
-
-        .task-card .task-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        .task-card .task-header h6 {
-            font-size: 1.1rem;
-            font-weight: bold;
-            margin: 0;
-        }
-
-        .task-card .task-details {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .task-card .task-details p {
-            margin: 0;
-            font-size: 0.95rem;
-            flex: 1 1 45%; /* Two columns on larger screens */
-        }
-
-        .task-card .task-details p strong {
-            display: inline-block;
-            width: 100px; /* Fixed width for labels */
-        }
-
-
-        /* Footer Styling */
-        footer {
-            background-color: #333; /* Dark background for contrast */
-            color: #fff;
-            padding: 3rem 0;
-        }
-
-        footer .container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 2rem;
-        }
-
-        footer .footer-section {
-            flex: 1 1 200px;
-        }
-
-        footer .footer-section h5 {
-            font-size: 1.25rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-            color: #ffd107; /* Yellow accent for headings */
-        }
-
-        footer .footer-section p {
-            font-size: 0.95rem;
-            margin: 0.5rem 0;
-        }
-
-        footer .footer-section ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        footer .footer-section ul li {
-            margin-bottom: 0.5rem;
-        }
-
-        footer .footer-section ul li a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: color 0.3s ease;
-        }
-
-        footer .footer-section ul li a:hover {
-            color: #ffd107; /* Yellow on hover */
-        }
-
-        footer .footer-section .social-icons {
-            display: flex;
-            gap: 1rem;
-        }
-
-        footer .footer-section .social-icons a {
-            color: #fff;
-            font-size: 1.5rem;
-            transition: color 0.3s ease;
-        }
-
-        footer .footer-section .social-icons a:hover {
-            color: #ffd107; /* Yellow on hover */
-        }
-
-        footer .footer-bottom {
-            text-align: center;
-            margin-top: 2rem;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.9rem;
-        }
-
-        /* Responsive Adjustments */
-        @media (max-width: 768px) {
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero-content p {
-                font-size: 1rem;
-            }
-
-            .btn {
-                padding: 0.6rem 1.5rem;
-                font-size: 1rem;
-            }
-
-            .dashboard-section,
-            .task-cards-section,
-            .projects-section,
-            .news-section {
-                padding: 3rem 0;
-            }
-
-            .card,
-            .task-card {
-                margin-bottom: 1.5rem;
-            }
-
-            .card h5 {
-                font-size: 1.1rem;
-            }
-
-            .card p {
-                font-size: 0.9rem;
-            }
-
-            .task-card .task-details p {
-                flex: 1 1 100%; /* Stack details vertically on small screens */
-            }
-
-            .projects-section .col-md-4 {
-                flex: 0 0 100%;
-                max-width: 100%;
-            }
-
-            .projects-section .project-img {
-                height: 150px;
-            }
-
-            .news-section .news-card {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .news-section .news-card img {
-                max-width: 100%;
-                height: 200px;
-            }
-
-            footer .container {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            footer .footer-section {
-                margin-bottom: 2rem;
-            }
-
-            footer .footer-section .social-icons {
-                justify-content: center;
-            }
-        }
+        <%@include file="assets/css/indx.css"%>
     </style>
 </head>
 <body>
@@ -452,7 +20,14 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">ConstructionXpert</a>
+        <a class="navbar-brand" href="#" style="display: flex; align-items: center;">
+            <div style="display: flex; margin-right: 10px;">
+                <div style="width: 8px; height: 16px; background: rgb(11,14,33); margin-right: 4px;"></div>
+                <div style="width: 8px; height: 12px; background: #090808; margin-right: 4px; align-self: flex-end;"></div>
+                <div style="width: 8px; height: 20px; background: #090808;"></div>
+            </div>
+            <span style="font-weight: 700; letter-spacing: 0.5px;">CONSTRUCTION<span style="color: #ffffff;">XPERT</span></span>
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -463,7 +38,12 @@
                 <li class="nav-item"><a href="task" class="nav-link"><i class="fas fa-tasks"></i> Tasks</a></li>
                 <li class="nav-item"><a href="#recent" class="nav-link"><i class="far fa-clock"></i> Recent</a></li>
                 <li class="nav-item"><a href="<%= request.getContextPath() %>/project" class="nav-link"><i class="fas fa-project-diagram"></i> Projects</a></li>
-                <li class="nav-item"><a href="listressource.jsp" class="nav-link"><i class="fas fa-cogs"></i> Resources</a></li>
+                <li class="nav-item"><a href="<%= request.getContextPath() %>/resource" class="nav-link"><i class="fas fa-cogs"></i> Resources</a></li>
+                <li class="nav-item">
+                    <button class="theme-toggle nav-link" id="themeToggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </li>
             </ul>
         </div>
     </div>
@@ -488,7 +68,9 @@
 <!-- Dashboard Section -->
 <section class="dashboard-section">
     <div class="container">
-        <h5>Dashboard</h5>
+        <h5>
+            🏗️ Construction Dashboard
+        </h5>
         <div class="row my-4">
             <div class="col-md-4">
                 <div class="card p-3 shadow">
@@ -562,6 +144,84 @@
         </div>
     </div>
 </section>
+<!-- Our Projects Section -->
+<section class="projects-section">
+    <div class="container">
+        <h5>OUR PROJECTS</h5>
+        <div class="row">
+            <div class="col-md-4">
+                <img src="https://www.aakashgroup.com/wp-content/uploads/2019/07/school-2-1-1000x500.jpg" class="project-img" onclick="openProjectModal('https://www.aakashgroup.com/wp-content/uploads/2019/07/school-2-1-1000x500.jpg', 'School Construction', 'A modern school building constructed with sustainable materials, completed in 2023.')">
+            </div>
+            <div class="col-md-4">
+                <img src="https://c8.alamy.com/comp/BKKABN/according-to-robert-hormes-the-german-architect-from-the-firm-gmp-BKKABN.jpg" class="project-img" onclick="openProjectModal('https://c8.alamy.com/comp/BKKABN/according-to-robert-hormes-the-german-architect-from-the-firm-gmp-BKKABN.jpg', 'Commercial Building', 'A state-of-the-art commercial complex designed for efficiency and aesthetics.')">
+            </div>
+            <div class="col-md-4">
+                <img src="https://livedemo00.template-help.com/wt_prod-19302/images/project-5-1200x800.jpg" class="project-img" onclick="openProjectModal('https://livedemo00.template-help.com/wt_prod-19302/images/project-5-1200x800.jpg', 'Modern House', 'A luxurious modern house with eco-friendly features, completed in 2022.')">
+            </div>
+            <div class="col-md-4">
+                <img src="https://livedemo00.template-help.com/wt_prod-19302/images/project-4-1200x800.jpg" class="project-img" onclick="openProjectModal('https://livedemo00.template-help.com/wt_prod-19302/images/project-4-1200x800.jpg', 'Apartment Complex', 'A multi-story apartment complex offering modern living spaces.')">
+            </div>
+            <div class="col-md-4">
+                <img src="https://livedemo00.template-help.com/wt_prod-19302/images/project-6-1200x800.jpg" class="project-img" onclick="openProjectModal('https://livedemo00.template-help.com/wt_prod-19302/images/project-6-1200x800.jpg', 'Industrial Facility', 'A large-scale industrial facility built for heavy-duty operations.')">
+            </div>
+            <div class="col-md-4">
+                <img src="https://media.licdn.com/dms/image/v2/D4D12AQF5CCwtwkNHEg/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1695451944444?e=2147483647&v=beta&t=00swPR4zmpD7oVPT8tVvflfICF2AcUIu0uwDesCLmaw" class="project-img" onclick="openProjectModal('https://media.licdn.com/dms/image/v2/D4D12AQF5CCwtwkNHEg/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1695451944444?e=2147483647&v=beta&t=00swPR4zmpD7oVPT8tVvflfICF2AcUIu0uwDesCLmaw', 'Construction Site', 'An ongoing construction site for a major urban development project.')">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Project Modal -->
+<div class="project-modal" id="projectModal">
+    <div class="project-modal-content" id="projectModalContent">
+        <span class="close-btn" onclick="closeProjectModal()">&times;</span>
+        <h3 id="projectTitle"></h3>
+        <p id="projectDescription"></p>
+    </div>
+</div>
+
+<!-- Recent News Section -->
+<section class="news-section">
+    <div class="container">
+        <h5>RECENT NEWS</h5>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="news-card">
+                    <div class="news-content">
+                        <h6>667 CONGRESS STREET PROJECT IS FINISHED!</h6>
+                        <div class="meta">Jan 20, 2018 by Brian Williamson</div>
+                        <p>Today we commemorated the completion of steel erection at the 667 Congress Street Apartments project with a traditional topping out. Despite the dreary weather, spirits were high in Portland, Maine, as...</p>
+                    </div>
+                    <img src="https://finance-commerce.com/files/2017/05/School-Construction-Stillwater6.jpg" alt="News 1">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="news-card">
+                    <div class="news-content">
+                        <h6>RIBBON "CUT" TO OPEN NEW BUS CENTER</h6>
+                        <div class="meta">Jan 20, 2018 by Brian Williamson</div>
+                        <p>Yesterday was a big day for the City of Burlington as a Green Mountain Transit bus literally drove through the ribbon to officially open the new Downtown Transit Center in Vermont. We have finally...</p>
+                    </div>
+                    <img src="https://cdn.ca.emap.com/wp-content/uploads/sites/8/2018/10/Sutton-Passivhaus-school-1024x683.jpg" alt="News 2">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="news-card">
+                    <div class="news-content">
+                        <h6>NEW DOUBLED RESIDENCE FACILITY</h6>
+                        <div class="meta">Jan 20, 2018 by Brian Williamson</div>
+                        <p>Last month, our construction company turned over the 110,000-square-foot, 237-bed Fox Run at Fulton housing facility for occupancy. Located adjacent to Marist College, the facility is now home to 237...</p>
+                    </div>
+                    <img src="https://arquitectonica.com/architecture/wp-content/uploads/sites/2/2018/07/High_School_for_Construction_Trades_Engineering_Architecture_QueensNY_1_ft-1920x1080.jpg" alt="News 3">
+                </div>
+            </div>
+        </div>
+        <div class="carousel-indicators">
+            <span class="active"></span>
+            <span></span>
+        </div>
+    </div>
+</section>
 
 <!-- Footer -->
 <footer>
@@ -607,7 +267,9 @@
         <p>© 2025 ConstructionXpert. All Rights Reserved.</p>
     </div>
 </footer>
-
+<script>
+    <%@include file="assets/js/index.js"%>
+</script>
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
