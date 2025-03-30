@@ -1,4 +1,4 @@
-</html><%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="com.example.constructionxpert.Model.Project" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.example.constructionxpert.Model.Resource" %>
@@ -22,7 +22,7 @@
 </head>
 <body>
 
-<!-- Navbar -->
+<!-- Navbar (unchanged) -->
 <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="#" style="display: flex; align-items: center;">
@@ -42,7 +42,7 @@
                 <li class="nav-item"><a href="<%= request.getContextPath() %>/" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
                 <li class="nav-item"><a href="task" class="nav-link"><i class="fas fa-tasks"></i> Tasks</a></li>
                 <li class="nav-item"><a href="<%= request.getContextPath() %>/project" class="nav-link"><i class="fas fa-project-diagram"></i> Projects</a></li>
-                <li class="nav-item"><a href="<%= request.getContextPath() %>/resource" class="nav-link"><i class="fas fa-cogs"></i> Resources</a></li>
+                <li class="nav-item"><a href="<%= request.getContextPath() %>/resource" class="nav-link active"><i class="fas fa-cogs"></i> Resources</a></li>
                 <li class="nav-item">
                     <button class="theme-toggle nav-link" id="themeToggle">
                         <i class="fas fa-moon"></i>
@@ -53,30 +53,29 @@
     </div>
 </nav>
 
-<!-- Main Content -->
-<div class="main-content">
+<!-- Resource Table Section -->
+<section class="resource-table-section">
     <div class="container">
-        <h2 class="mb-4">Resource Management</h2>
-
-        <!-- Search and Add Resource -->
+        <h5 class="mb-4"><i class="fas fa-cogs me-2"></i>Resource Management</h5>
         <div class="search-container">
-            <form method="get" action="<%= request.getContextPath() %>/resource" class="d-flex gap-2">
+            <form method="get" action="<%= request.getContextPath() %>/resource" class="d-flex gap-2 align-items-center flex-grow-1">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" name="id" placeholder="Search by Resource ID..." required>
+                </div>
                 <input type="hidden" name="action" value="filterResource">
-                <input type="text" name="id" placeholder="Search by Resource ID..." required>
-                <button type="submit" class="btn btn-primary">Search</button>
-                <a href="<%= request.getContextPath() %>/resource?action=listResource" class="btn btn-secondary">Show All</a>
+                <button type="submit" class="search-btn">Search</button>
+                <a href="<%= request.getContextPath() %>/resource?action=listResource" class="show-all-btn">Show All</a>
             </form>
             <button class="add-resource-btn" data-bs-toggle="modal" data-bs-target="#resourceModal" onclick="resetModal()">
                 <i class="fas fa-plus"></i> Add Resource
             </button>
         </div>
-
-        <!-- Resource Table -->
-        <div class="table-container">
-            <table class="table">
+        <div class="table-responsive">
+            <table class="resource-table">
                 <thead>
                 <tr>
-                    <th>Resource ID</th>
+                    <th>ID</th>
                     <th>Resource Name</th>
                     <th>Type</th>
                     <th>Supplier</th>
@@ -96,12 +95,12 @@
                     <td><%= resource.getSupplier() %></td>
                     <td><%= resource.getQuantity() %></td>
                     <td>
-                        <button class="action-btn edit-btn" data-bs-toggle="modal" data-bs-target="#resourceModal"
+                        <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#resourceModal"
                                 onclick="fillModal('<%= resource.getResourceId() %>', '<%= resource.getResourceName() %>', '<%= resource.getType() %>', '<%= resource.getSupplier() %>', '<%= resource.getQuantity() %>')">
-                            <i class="fas fa-edit"></i> Edit
+                            Edit
                         </button>
-                        <a href="<%= request.getContextPath() %>/resource?action=deleteResource&id=<%= resource.getResourceId() %>" class="action-btn delete-btn">
-                            <i class="fas fa-trash-alt"></i> Delete
+                        <a href="<%= request.getContextPath() %>/resource?action=deleteResource&id=<%= resource.getResourceId() %>" class="btn btn-danger btn-sm">
+                            Delete
                         </a>
                     </td>
                 </tr>
@@ -118,12 +117,12 @@
                     <td><%= r.getSupplier() %></td>
                     <td><%= r.getQuantity() %></td>
                     <td>
-                        <button class="action-btn edit-btn" data-bs-toggle="modal" data-bs-target="#resourceModal"
+                        <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#resourceModal"
                                 onclick="fillModal('<%= r.getResourceId() %>', '<%= r.getResourceName() %>', '<%= r.getType() %>', '<%= r.getSupplier() %>', '<%= r.getQuantity() %>')">
-                            <i class="fas fa-edit"></i> Edit
+                            Edit
                         </button>
-                        <a href="<%= request.getContextPath() %>/resource?action=deleteResource&id=<%= r.getResourceId() %>" class="action-btn delete-btn">
-                            <i class="fas fa-trash-alt"></i> Delete
+                        <a href="<%= request.getContextPath() %>/resource?action=deleteResource&id=<%= r.getResourceId() %>" class="btn btn-danger btn-sm">
+                            Delete
                         </a>
                     </td>
                 </tr>
@@ -141,9 +140,9 @@
             </table>
         </div>
     </div>
-</div>
+</section>
 
-<!-- Resource Modal -->
+<!-- Resource Modal (unchanged) -->
 <div class="modal fade" id="resourceModal" tabindex="-1" aria-labelledby="resourceModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -180,35 +179,29 @@
     </div>
 </div>
 
-<!-- Footer -->
+<!-- Footer (unchanged) -->
 <footer>
     <div class="container">
-        <!-- Company Info -->
         <div class="footer-section">
             <h5>ConstructionXpert</h5>
             <p>We are a leading construction company dedicated to delivering exceptional projects with precision and quality.</p>
         </div>
-
-        <!-- Quick Links -->
         <div class="footer-section">
             <h5>Quick Links</h5>
             <ul>
-                <li><a href="<%= request.getContextPath() %>/">Home</a></li>
-                <li><a href="task">Tasks</a></li>
+                <li><a href="<%= request.getContextPath() %>/project">Home</a></li>
+                <li><a href="<%= request.getContextPath() %>/task?action=listTasks&project_id=">Tasks</a></li>
+                <li><a href="#recent">Recent</a></li>
                 <li><a href="<%= request.getContextPath() %>/project">Projects</a></li>
-                <li><a href="<%= request.getContextPath() %>/resource">Resources</a></li>
+                <li><a href="listressource.jsp">Resources</a></li>
             </ul>
         </div>
-
-        <!-- Contact Info -->
         <div class="footer-section">
             <h5>Contact Us</h5>
             <p><i class="fas fa-map-marker-alt me-2"></i> 123 Construction Ave, Build City, 12345</p>
             <p><i class="fas fa-phone me-2"></i> +212 55 123-4567</p>
             <p><i class="fas fa-envelope me-2"></i> info@constructionxpert.com</p>
         </div>
-
-        <!-- Social Media -->
         <div class="footer-section">
             <h5>Follow Us</h5>
             <div class="social-icons">
@@ -227,7 +220,7 @@
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-    <%@include file="assets/js/index.js"%>
+    <%@include file="assets/js/resource.js"%>
 </script>
 </body>
 </html>

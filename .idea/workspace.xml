@@ -20,8 +20,8 @@
       <list>
         <option value="Class" />
         <option value="Jsp File" />
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -70,6 +70,7 @@
       <recent name="C:\ConstructionXpert\src\main\Conception" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\ConstructionXpert\src\main\webapp\assets" />
       <recent name="C:\ConstructionXpert\src\main\webapp" />
       <recent name="C:\ConstructionXpert\src\main\webapp\Projetxpert" />
       <recent name="C:\ConstructionXpert\src\main\webapp\project " />

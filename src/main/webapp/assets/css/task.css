@@ -8,23 +8,17 @@
 
 body {
     overflow-x: hidden;
-    background-image: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    background-color: rgba(245, 245, 245, 0.9); /* Light mode overlay */
-    color: #333;
+    background-color: #fff8e1; /* Light mode background */
 }
 
 body.dark-mode {
-    background-image: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
-    background-color: rgba(18, 18, 18, 0.9); /* Dark mode overlay */
+    background-color: #1c2526; /* Dark mode background */
     color: #e0e0e0;
 }
 
-/* Navbar Styling */
+/* Navbar Styling (unchanged) */
 .navbar {
-    background-color: #ffd107; /* Yellow in light mode */
+    background-color: #ffd107;
     padding: 10px;
     position: fixed;
     top: 0;
@@ -34,12 +28,17 @@ body.dark-mode {
 }
 
 body.dark-mode .navbar {
-    background-color: #2a3439; /* Dark gray in dark mode */
+    background-color: #2a3439;
 }
 
 .navbar-brand {
     font-weight: bold;
     color: #090808 !important;
+    display: flex;
+    align-items: center;
+    font-family: 'Arial', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
 }
 
 body.dark-mode .navbar-brand {
@@ -57,7 +56,7 @@ body.dark-mode .nav-link {
 
 .nav-link:hover {
     background: rgba(255, 255, 255, 0.71);
-    color: #0b0e21 !important;
+    color: #ffd107 !important;
     border-radius: 16px;
     font-size: 14px;
 }
@@ -67,7 +66,7 @@ body.dark-mode .nav-link:hover {
     color: #ffd107 !important;
 }
 
-/* Theme Toggle Button */
+/* Theme Toggle Button (unchanged) */
 .theme-toggle {
     background: none;
     border: none;
@@ -88,22 +87,41 @@ body.dark-mode .theme-toggle {
     color: #ffd107;
 }
 
-/* Resource Table Section */
-.resource-table-section {
+/* Task Table Section */
+.task-table-section {
     position: relative;
     padding: 5rem 0;
+    background-image: url('images/discussing-blueprint.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     min-height: 100vh;
     display: flex;
-    align-items: center;
+    GCPalign-items: center;
     margin-top: 56px;
 }
 
-.resource-table-section .container {
+.task-table-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay in light mode */
+    z-index: 1;
+}
+
+body.dark-mode .task-table-section::before {
+    background: rgba(0, 0, 0, 0.7); /* Darker overlay in dark mode */
+}
+
+.task-table-section .container {
     position: relative;
     z-index: 2;
 }
 
-.resource-table-section h5 {
+.task-table-section h5 {
     color: white;
     text-align: center;
     font-size: 2rem;
@@ -112,124 +130,8 @@ body.dark-mode .theme-toggle {
     text-shadow: 2px 2px 4px rgb(11, 14, 33);
 }
 
-/* Search Container */
-.search-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 2rem;
-    flex-wrap: wrap;
-    gap: 1rem;
-}
-
-.search-box {
-    display: flex;
-    align-items: center;
-    background: rgba(255, 255, 255, 0.73);
-    border-radius: 50px;
-    padding: 0.5rem 1.5rem;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    flex-grow: 1;
-    max-width: 400px;
-    border: 2px solid #ffd107;
-    transition: all 0.3s ease;
-}
-
-body.dark-mode .search-box {
-    background: #2a3439;
-    border-color: #d4a017;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-}
-
-.search-box:hover {
-    transform: scale(1.02);
-}
-
-.search-box i {
-    color: #ffd107;
-    margin-right: 0.75rem;
-}
-
-body.dark-mode .search-box i {
-    color: #d4a017;
-}
-
-.search-box input[type="text"] {
-    border: none;
-    background: transparent;
-    padding: 0.5rem;
-    width: 100%;
-    outline: none;
-    color: #333;
-}
-
-body.dark-mode .search-box input[type="text"] {
-    color: #e0e0e0;
-}
-
-.search-box input[type="text"]::placeholder {
-    color: #888;
-}
-
-body.dark-mode .search-box input[type="text"]::placeholder {
-    color: #aaa;
-}
-
-.search-btn {
-    background: #ffd107;
-    color: #333;
-    padding: 0.6rem 1.8rem;
-    border-radius: 50px;
-    font-weight: 600;
-    border: none;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-body.dark-mode .search-btn {
-    background: #d4a017;
-    color: #fff;
-}
-
-.search-btn:hover {
-    background: #ffca28;
-    transform: translateY(-2px);
-}
-
-.show-all-btn {
-    background: #6c757d;
-    color: white;
-    padding: 0.6rem 1.8rem;
-    border-radius: 50px;
-    font-weight: 600;
-    text-decoration: none;
-}
-
-.show-all-btn:hover {
-    background: #5a6268;
-    transform: translateY(-2px);
-}
-
-.add-resource-btn {
-    background-color: #ffd107;
-    color: #333;
-    padding: 0.8rem 1.8rem;
-    border-radius: 50px;
-    font-weight: bold;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-body.dark-mode .add-resource-btn {
-    background-color: #d4a017;
-    color: #fff;
-}
-
-.add-resource-btn:hover {
-    background-color: #ffca28;
-    transform: translateY(-2px);
-}
-
-/* Resource Table Styling */
-.resource-table {
+/* Task Table Styling */
+.task-table {
     width: 100%;
     border-collapse: separate;
     border-spacing: 0 10px;
@@ -239,12 +141,12 @@ body.dark-mode .add-resource-btn {
     overflow: hidden;
 }
 
-body.dark-mode .resource-table {
+body.dark-mode .task-table {
     background-color: #2a3439; /* Dark mode: dark gray */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-.resource-table thead th {
+.task-table thead th {
     background-color: #ffd107; /* Yellow header in light mode */
     color: #090808;
     padding: 1rem;
@@ -254,87 +156,143 @@ body.dark-mode .resource-table {
     font-size: 0.9rem;
 }
 
-body.dark-mode .resource-table thead th {
+body.dark-mode .task-table thead th {
     background-color: #d4a017; /* Darker yellow in dark mode */
     color: #fff;
 }
 
-.resource-table tbody tr {
+.task-table tbody tr {
     background-color: rgba(255, 255, 255, 0.9); /* Light mode row */
     transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
-body.dark-mode .resource-table tbody tr {
+body.dark-mode .task-table tbody tr {
     background-color: #2a3439; /* Dark mode row */
 }
 
-.resource-table tbody tr:hover {
+.task-table tbody tr:hover {
     transform: scale(1.02);
     background-color: #fff8e1; /* Light mode hover */
 }
 
-body.dark-mode .resource-table tbody tr:hover {
+body.dark-mode .task-table tbody tr:hover {
     background-color: #3a4449; /* Dark mode hover */
 }
 
-.resource-table td {
+.task-table td {
     padding: 1rem;
     color: #333;
     font-size: 0.95rem;
     vertical-align: middle;
 }
 
-body.dark-mode .resource-table td {
+body.dark-mode .task-table td {
     color: #e0e0e0;
 }
 
-/* Modal Styling */
-.modal-content {
-    background-color: #fff;
+.task-table .badge {
+    font-size: 0.85rem;
+}
+
+/* Modal Styling (unchanged) */
+.dark-modal {
+    background-color: #1a1a1a;
+    color: #fff;
     border-radius: 15px;
-    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    border: 1px solid #444;
 }
 
-body.dark-mode .modal-content {
-    background-color: #2a2a2a;
+body.dark-mode .dark-modal {
+    background-color: #2a3439;
+    border: 1px solid #3a4445;
 }
 
-.modal-header {
-    background-color: #ffd107;
-    color: #333;
+.dark-modal .modal-header {
+    background-color: #121212;
+    border-bottom: 1px solid #444;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
-    border-bottom: none;
 }
 
-body.dark-mode .modal-header {
+body.dark-mode .dark-modal .modal-header {
+    background-color: #3a4445;
+    border-bottom: 1px solid #555;
+}
+
+.dark-modal .modal-footer {
+    background-color: #121212;
+    border-top: 1px solid #444;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+body.dark-mode .dark-modal .modal-footer {
+    background-color: #3a4445;
+    border-top: 1px solid #555;
+}
+
+.dark-modal .form-control {
+    background-color: #2a2a2a;
+    color: #fff;
+    border: 1px solid #444;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+body.dark-mode .dark-modal .form-control {
+    background-color: #3a4445;
+    color: #e0e0e0;
+    border: 1px solid #555;
+}
+
+.gold-text {
+    color: #FFD700;
+    font-weight: 500;
+}
+
+body.dark-mode .gold-text {
+    color: #d4a017;
+}
+
+.gold-btn {
+    background-color: #FFD700;
+    color: #000;
+    font-weight: bold;
+}
+
+body.dark-mode .gold-btn {
     background-color: #d4a017;
     color: #fff;
 }
 
-.modal-footer {
-    border-top: none;
+.btn-close-white {
+    filter: invert(1);
 }
 
-.form-control {
-    background-color: #fff;
-    color: #333;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+body.dark-mode .btn-close-white {
+    filter: invert(0.8);
 }
 
-body.dark-mode .form-control {
-    background-color: #3a3a3a;
-    color: #e0e0e0;
-    border-color: #555;
+.btn-primary {
+    background-color: #f5c518;
+    color: black;
+    font-weight: bold;
 }
 
-.form-control:focus {
-    border-color: #ffd107;
-    box-shadow: 0 0 0 0.25rem rgba(255, 193, 7, 0.25);
+body.dark-mode .btn-primary {
+    background-color: #d4a017;
+    color: #fff;
 }
 
-/* Footer Styling */
+.btn-primary:hover {
+    background-color: #e0b015;
+}
+
+body.dark-mode .btn-primary:hover {
+    background-color: #b58b14;
+}
+
+/* Footer Styling (unchanged) */
 footer {
     background-color: #333;
     color: #fff;
@@ -413,37 +371,28 @@ footer .footer-bottom {
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
-    .resource-table-section {
+    .task-table-section {
         padding: 3rem 0;
     }
 
-    .search-container {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .search-box {
-        max-width: 100%;
-    }
-
-    .resource-table thead {
+    .task-table thead {
         display: none; /* Hide header on small screens */
     }
 
-    .resource-table tbody tr {
+    .task-table tbody tr {
         display: block;
         margin-bottom: 1.5rem;
         border-radius: 10px;
     }
 
-    .resource-table td {
+    .task-table td {
         display: block;
         text-align: left;
         padding: 0.75rem;
         font-size: 0.9rem;
     }
 
-    .resource-table td::before {
+    .task-table td::before {
         content: attr(data-label);
         font-weight: bold;
         display: inline-block;
@@ -451,7 +400,7 @@ footer .footer-bottom {
         color: #090808;
     }
 
-    body.dark-mode .resource-table td::before {
+    body.dark-mode .task-table td::before {
         color: #ffd107;
     }
 

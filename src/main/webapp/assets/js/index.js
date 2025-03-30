@@ -41,3 +41,10 @@ function resetModal() {
     document.getElementById('quantity').value = '';
     document.getElementById('resourceForm').action = '<%= request.getContextPath() %>/resource?action=insertResource';
 }
+document.addEventListener("DOMContentLoaded", function() {
+    var elements = document.querySelectorAll(".animatable");
+    elements.forEach(function(element) {
+        element.classList.remove("hidden");
+        element.classList.add("animate");
+    });
+});

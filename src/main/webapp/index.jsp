@@ -57,13 +57,49 @@
             <div class="hero-content">
                 <h1>Edifice Experienced Construction Professionals</h1>
                 <div class="button-group">
-                    <button class="btn btn-primary">See Projects</button>
-                    <button class="btn btn-secondary">Contact Us</button>
+                    <a href="#project" class="btn btn-primary">See Projects</a>
+                    <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#contactUsModal">Contact Us</button>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+<!-- Contact Us Modal -->
+<div class="modal fade" id="contactUsModal" tabindex="-1" aria-labelledby="contactUsModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="contactUsModalLabel">Contact Us</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="contactUsForm" action="<%= request.getContextPath() %>/contact" method="post">
+                    <div class="mb-3">
+                        <label for="contactName" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="contactName" name="name" placeholder="Enter your name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="contactEmail" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="contactEmail" name="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="contactSubject" class="form-label">Subject</label>
+                        <input type="text" class="form-control" id="contactSubject" name="subject" placeholder="Enter subject" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="contactMessage" class="form-label">Message</label>
+                        <textarea class="form-control" id="contactMessage" name="message" rows="4" placeholder="Enter your message" required></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" form="contactUsForm" class="btn btn-primary">Send Message</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- Dashboard Section -->
 <section class="dashboard-section">
@@ -97,55 +133,9 @@
     </div>
 </section>
 
-<!-- Task Cards Section -->
-<section class="task-cards-section" id="recent">
-    <div class="container">
-        <h5>Recent Tasks</h5>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="task-card">
-                    <div class="task-header">
-                        <h6>#T101 - Website Evaluation</h6>
-                        <span class="badge bg-warning text-dark">Ongoing</span>
-                    </div>
-                    <div class="task-details">
-                        <p><strong>Project:</strong> Office Construction</p>
-                        <p><strong>Start Date:</strong> May 1, 2024</p>
-                        <p><strong>End Date:</strong> May 5, 2024</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="task-card">
-                    <div class="task-header">
-                        <h6>#T102 - Infrastructure Setup</h6>
-                        <span class="badge bg-success">Completed</span>
-                    </div>
-                    <div class="task-details">
-                        <p><strong>Project:</strong> Apartment Renovation</p>
-                        <p><strong>Start Date:</strong> June 5, 2024</p>
-                        <p><strong>End Date:</strong> June 10, 2024</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="task-card">
-                    <div class="task-header">
-                        <h6>#T103 - Finish Painting</h6>
-                        <span class="badge bg-secondary">Pending</span>
-                    </div>
-                    <div class="task-details">
-                        <p><strong>Project:</strong> Store Expansion</p>
-                        <p><strong>Start Date:</strong> July 10, 2024</p>
-                        <p><strong>End Date:</strong> July 15, 2024</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+
 <!-- Our Projects Section -->
-<section class="projects-section">
+<section class="projects-section" id="project">
     <div class="container">
         <h5>OUR PROJECTS</h5>
         <div class="row">
@@ -181,7 +171,7 @@
 </div>
 
 <!-- Recent News Section -->
-<section class="news-section">
+<section class="news-section"  id="recent">
     <div class="container">
         <h5>RECENT NEWS</h5>
         <div class="row">

@@ -203,7 +203,137 @@ body.dark-mode .btn-secondary {
 body.dark-mode .btn-secondary:hover {
     background-color: #5c666b;
 }
+/* Contact Us Button */
+.btn.btn-secondary {
+    background-color: #6c757d;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
 
+body.dark-mode .btn.btn-secondary {
+    background-color: #555;
+    color: #e0e0e0;
+}
+
+.btn.btn-secondary:hover {
+    background-color: #5a6268;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode .btn.btn-secondary:hover {
+    background-color: #666;
+}
+
+/* Modal Styling for Contact Us */
+#contactUsModal .modal-content {
+    border-radius: 15px;
+    border: none;
+    background-color: #fff;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode #contactUsModal .modal-content {
+    background-color: #2a2a2a;
+}
+
+#contactUsModal .modal-header {
+    background-color: #ffc107;
+    color: #333;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom: none;
+    padding: 1.5rem;
+}
+
+body.dark-mode #contactUsModal .modal-header {
+    background-color: #d4a017;
+    color: #fff;
+}
+
+#contactUsModal .modal-title {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+#contactUsModal .modal-body {
+    padding: 1.5rem;
+}
+
+#contactUsModal .form-control {
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1.25rem;
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #ddd;
+    transition: all 0.3s;
+}
+
+body.dark-mode #contactUsModal .form-control {
+    background-color: #3a3a3a;
+    color: #e0e0e0;
+    border-color: #555;
+}
+
+#contactUsModal .form-control:focus {
+    border-color: #ffc107;
+    box-shadow: 0 0 0 0.25rem rgba(255, 193, 7, 0.25);
+}
+
+#contactUsModal .form-control::placeholder {
+    color: #999;
+}
+
+body.dark-mode #contactUsModal .form-control::placeholder {
+    color: #aaa;
+}
+
+#contactUsModal .modal-footer {
+    border-top: none;
+    padding: 1.5rem;
+    justify-content: flex-end;
+}
+
+#contactUsModal .modal-footer .btn-secondary {
+    background-color: #6c757d;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+body.dark-mode #contactUsModal .modal-footer .btn-secondary {
+    background-color: #555;
+}
+
+#contactUsModal .modal-footer .btn-primary {
+    background-color: #ffc107;
+    color: #333;
+    font-weight: bold;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+
+body.dark-mode #contactUsModal .modal-footer .btn-primary {
+    background-color: #d4a017;
+    color: #fff;
+}
+
+#contactUsModal .modal-footer .btn-primary:hover {
+    background-color: #ffca28;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode #contactUsModal .modal-footer .btn-primary:hover {
+    background-color: #b58b14;
+}
 /* Dashboard Section */
 .dashboard-section {
     position: relative;
@@ -784,4 +914,69 @@ body.dark-mode .news-section .carousel-indicators span {
     footer .footer-section .social-icons {
         justify-content: center;
     }
+}
+/* Containers */
+.h1-container, .p-container, .images-container {
+    position: relative;
+    margin-bottom: 20px;
+}
+.image1-container, .image2-container {
+    display: inline-block;
+    width: 50%;
+    position: relative;
+}
+
+/* Hidden classes */
+.h1.hidden {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+.p.hidden {
+    transform: translateY(100%);
+    opacity: 0;
+}
+.image1.hidden {
+    transform: translateX(100%);
+    opacity: 0;
+}
+.image2.hidden {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+/* Animate classes */
+.h1.animate {
+    animation: slideInAndBounce 1s ease forwards;
+}
+.p.animate {
+    animation: slideInFromBottom 1s ease forwards;
+    animation-delay: 0.5s;
+}
+.image1.animate {
+    animation: slideInFromRight 1s ease forwards;
+    animation-delay: 1s;
+}
+.image2.animate {
+    animation: slideInFromLeft 1s ease forwards;
+    animation-delay: 1.5s;
+}
+
+/* Keyframes */
+@keyframes slideInAndBounce {
+    0% { transform: translateX(-100%) scale(1); opacity: 0; }
+    50% { transform: translateX(0) scale(1.1); opacity: 1; }
+    70% { transform: translateX(0) scale(0.9); }
+    100% { transform: translateX(0) scale(1); }
+}
+@keyframes slideInFromBottom {
+    0% { transform: translateY(100%); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+@keyframes slideInFromRight {
+    0% { transform: translateX(100%); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+@keyframes slideInFromLeft {
+    0% { transform: translateX(-100%); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
 }
